@@ -12,7 +12,7 @@ const User = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/getusers");
+        const response = await fetch("http://192.168.49.2:30007/api/getusers");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }
@@ -32,7 +32,7 @@ const User = () => {
     const newUser = { name, email };
 
     try {
-      const response = await fetch("http://localhost:5000/api/adduser", {
+      const response = await fetch("http://192.168.49.2:30007/api/adduser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),
@@ -60,7 +60,7 @@ const User = () => {
 
   const handleDeleteUser = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/deleteuser/${id}`, {
+      await fetch(`http://192.168.49.2:30007/api/deleteuser/${id}`, {
         method: "DELETE",
       });
       setUsers(users.filter((user) => user.id !== id));
@@ -71,7 +71,7 @@ const User = () => {
   const handleUpdateUser = async (id, name, email) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/updateuser/${id}`,
+        `http://192.168.49.2:30007/api/updateuser/${id}`,
         {
           // 🔹 Use dynamic `id`
           method: "PUT",
